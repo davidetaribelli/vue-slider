@@ -14,9 +14,10 @@
     <div id="app">
 
         <div class="container">
-            <div class="slider-wrapper" tabindex="0" @mouseover="setAutoplayOn()" @mouseleave="setAutoplayOff()">
+            <!-- utilizzo di mouseover e mouseleave per utilizzo dell'autoplay senza bottone -->
+            <div class="slider-wrapper" tabindex="0" @mouseover="setAutoplayOn()" @mouseleave="setAutoplayOff()"> 
                 <div class="item">
-                <!-- <img v-for="(element, i) in slides" :src="element.image" :alt="element.title" :class="(i == 0) ? 'visible' : ''"  /> -->
+                    <!-- activeImage = 0, quindi verrà preso l'elemento 0 -->
                 <img :src="slides[activeImage].image" :alt="slides[activeImage].title" />
                 <div class="text">
                     <h3>{{slides[activeImage].title}}</h3>
@@ -26,8 +27,10 @@
                 </div>
 
                 <div class="thumbs">
+                    <!-- svolgo le funzioni create con il click -->
                     <div @click= "prevSlide()" class="prev"></div>
                     <div @click= "nextSlide()" class="next"></div>
+                    <!-- creo un ciclo per creare i div che conterranno le mie immagini -->
                     <div v-for="element,i in slides" :class="getActive(i)" @click="changeImage(i)">
                         <img :src="slides[i].image" :alt="slides[i].title" />
                     </div>

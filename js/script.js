@@ -32,7 +32,7 @@ createApp({
         }
     },
     methods: {
-
+        // aggiungo la classe active
         getActive(i){
             let classes = "thumb";
 
@@ -40,7 +40,7 @@ createApp({
 
             return classes;
         },
-
+        // funzione per bottone "precedente"
         prevSlide(){
             this.activeImage--;
             
@@ -48,7 +48,7 @@ createApp({
                 this.activeImage = this.slides.length-1;
             }
         },
-
+        // funzione per bottone "successivo" 
         nextSlide() {
             if (this.activeImage == this.slides.length - 1) {
                 this.activeImage = 0;
@@ -56,15 +56,15 @@ createApp({
                 this.activeImage++;
             }  
         },
-
+        // funzione per cambiare slide in base all'immagine corrente
         changeImage(i){
             this.activeImage = i;
         },
-
+        // funzione per imporstare un tempo con l'aggiunta della funzione [nextSlide()]
         setAutoplayOn() {
             this.autoplay = setInterval(this.nextSlide, 3000);
         },
-        
+        // funzione che mi permette di terminare il [setInterval]
         setAutoplayOff() {
             clearInterval(this.autoplay)
             this.autoplay = null;
